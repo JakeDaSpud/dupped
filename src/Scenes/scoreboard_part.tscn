@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://4g36jp4j7phv"]
+
+[node name="ScoreboardPart" type="Sprite2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -88.0
+offset_top = -264.0
+offset_right = 88.0

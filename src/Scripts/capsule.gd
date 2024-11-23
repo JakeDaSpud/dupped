@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var game : Node2D;
 
-@export var speed : float = 150.0;
+@export var speed : int = 50;
 
 func _ready() -> void:
 	game = get_tree().get_current_scene();

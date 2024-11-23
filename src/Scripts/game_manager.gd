@@ -9,7 +9,6 @@ var score : int = 0;
 func _process(delta) -> void:
 	if _in_menu && (Input.is_action_just_pressed("button_gamepad") || Input.is_action_just_pressed("button_keyboard") || Input.is_action_just_pressed("button_mouse")):
 		_in_menu = false;
-	
 
 func end_game() -> void:
 	self.game_over = true;
