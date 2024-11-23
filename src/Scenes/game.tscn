@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhy8cbfniuhqw"]
+
+[ext_resource type="Script" path="res://src/Scripts/game_manager.gd" id="1_jl2uv"]
+[ext_resource type="PackedScene" uid="uid://dgmyqu482ws7t" path="res://src/Scenes/Player.tscn" id="1_rc4ua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctfxu"]
+size = Vector2(768, 48)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_jl2uv")
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="background" type="Area2D" parent="Level"]
+z_index = -5
+
+[node name="ColorRect" type="ColorRect" parent="Level/background"]
+offset_left = -72.0
+offset_top = -8.0
+offset_right = 712.0
+offset_bottom = 368.0
+color = Color(0.215686, 0.184314, 0.458824, 1)
+
+[node name="roof" type="StaticBody2D" parent="Level"]
+position = Vector2(320, 336)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/roof"]
+shape = SubResource("RectangleShape2D_ctfxu")
+
+[node name="ColorRect" type="ColorRect" parent="Level/roof"]
+offset_left = -384.0
+offset_top = -24.0
+offset_right = 384.0
+offset_bottom = 24.0
+
+[node name="floor" type="StaticBody2D" parent="Level"]
+position = Vector2(320, 24)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/floor"]
+shape = SubResource("RectangleShape2D_ctfxu")
+
+[node name="ColorRect" type="ColorRect" parent="Level/floor"]
+offset_left = -384.0
+offset_top = -24.0
+offset_right = 384.0
+offset_bottom = 24.0
+
+[node name="Player" parent="." instance=ExtResource("1_rc4ua")]
+position = Vector2(320, 176)
+slide_on_ceiling = false
+platform_on_leave = 1
+platform_wall_layers = 2
