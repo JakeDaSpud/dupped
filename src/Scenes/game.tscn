@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhy8cbfniuhqw"]
+[gd_scene load_steps=5 format=3 uid="uid://dhy8cbfniuhqw"]
 
 [ext_resource type="Script" path="res://src/Scripts/game_manager.gd" id="1_jl2uv"]
 [ext_resource type="PackedScene" uid="uid://dgmyqu482ws7t" path="res://src/Scenes/Player.tscn" id="1_rc4ua"]
+[ext_resource type="PackedScene" uid="uid://2kxndr85are3" path="res://src/Scenes/Capsule.tscn" id="2_51kqe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctfxu"]
 size = Vector2(768, 48)
@@ -46,6 +47,10 @@ offset_left = -384.0
 offset_top = -24.0
 offset_right = 384.0
 offset_bottom = 24.0
+
+[node name="Capsule" parent="Level" instance=ExtResource("2_51kqe")]
+position = Vector2(-192, 256)
+speed = 50.0
 
 [node name="Player" parent="." instance=ExtResource("1_rc4ua")]
 position = Vector2(320, 176)
