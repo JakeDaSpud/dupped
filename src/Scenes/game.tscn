@@ -1,39 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhy8cbfniuhqw"]
+[gd_scene load_steps=7 format=3 uid="uid://dhy8cbfniuhqw"]
 
 [ext_resource type="Script" path="res://src/Scripts/game_manager.gd" id="1_jl2uv"]
 [ext_resource type="PackedScene" uid="uid://dgmyqu482ws7t" path="res://src/Scenes/Player.tscn" id="1_rc4ua"]
 [ext_resource type="PackedScene" uid="uid://2kxndr85are3" path="res://src/Scenes/Capsule.tscn" id="2_51kqe"]
+[ext_resource type="PackedScene" uid="uid://b0xxo0qt207yi" path="res://src/Scenes/menu_part.tscn" id="2_ko07x"]
 [ext_resource type="PackedScene" uid="uid://ueg1kpnu0mqg" path="res://src/Scenes/surface.tscn" id="2_qy24i"]
 [ext_resource type="PackedScene" uid="uid://4g36jp4j7phv" path="res://src/Scenes/scoreboard_part.tscn" id="4_adq7y"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jl2uv")
 
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="AudioMenu" type="Node2D" parent="Menu"]
+
+[node name="current_audio" parent="Menu/AudioMenu" instance=ExtResource("2_ko07x")]
+position = Vector2(96, 160)
+animation = &"sound"
+
+[node name="MenuPart" parent="Menu/AudioMenu" instance=ExtResource("2_ko07x")]
+position = Vector2(160, 160)
+animation = &"arrow"
+
+[node name="current_audio2" parent="Menu/AudioMenu" instance=ExtResource("2_ko07x")]
+position = Vector2(224, 160)
+animation = &"mute1"
+
+[node name="hold_to_mute" parent="Menu/AudioMenu" instance=ExtResource("2_ko07x")]
+position = Vector2(160, 224)
+animation = &"hold"
+
+[node name="start" parent="Menu" instance=ExtResource("2_ko07x")]
+position = Vector2(448, 192)
+
 [node name="Level" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="background" type="Area2D" parent="Level"]
 z_index = -5
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Level/background"]
-offset_left = -72.0
-offset_top = -8.0
-offset_right = 712.0
-offset_bottom = 368.0
+offset_top = 32.0
+offset_right = 640.0
+offset_bottom = 328.0
 color = Color(0.215686, 0.184314, 0.458824, 1)
+metadata/_edit_lock_ = true
 
 [node name="scoreboard" type="Node2D" parent="Level"]
+visible = false
+metadata/_edit_lock_ = true
 
 [node name="score1" parent="Level/scoreboard" instance=ExtResource("4_adq7y")]
-position = Vector2(120, 312)
+position = Vector2(112, 180.25)
 
 [node name="score2" parent="Level/scoreboard" instance=ExtResource("4_adq7y")]
-position = Vector2(320, 312)
+position = Vector2(320, 180.25)
 
 [node name="score3" parent="Level/scoreboard" instance=ExtResource("4_adq7y")]
-position = Vector2(520, 312)
+position = Vector2(528, 180.25)
 
 [node name="roof" parent="Level" instance=ExtResource("2_qy24i")]
 position = Vector2(320, 16)
+metadata/_edit_lock_ = true
 
 [node name="floor" parent="Level" instance=ExtResource("2_qy24i")]
 position = Vector2(320, 344)
@@ -42,6 +71,7 @@ position = Vector2(320, 344)
 position = Vector2(-192, 256)
 
 [node name="Player" parent="." instance=ExtResource("1_rc4ua")]
+visible = false
 position = Vector2(320, 176)
 slide_on_ceiling = false
 platform_on_leave = 1

@@ -11,6 +11,9 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	
+	if (game.in_menu):
+		return;
+	
 	if (game.game_over):
 		self.rotation += delta * _rotation_speed;
 		return;

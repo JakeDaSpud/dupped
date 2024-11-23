@@ -4,3 +4,6 @@
 
 # My JavaScript Build Files
 /Web_Builds/
+
+# My FireAlpaca Files
+*.mdp

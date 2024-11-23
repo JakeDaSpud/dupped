@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/Scripts/player.gd" id="1_3uoxq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x8wjj"]
-radius = 24.0
+radius = 23.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
