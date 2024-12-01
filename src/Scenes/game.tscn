@@ -32,7 +32,6 @@ animation = &"hold"
 
 [node name="start" parent="Menu" instance=ExtResource("2_ko07x")]
 position = Vector2(448, 192)
-animation = &"arrow"
 
 [node name="Level" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

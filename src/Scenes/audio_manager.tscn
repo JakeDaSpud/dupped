@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3r5d3ybwxxe5"]
+
+[ext_resource type="Script" path="res://src/Scripts/audio_manager.gd" id="1_htggh"]
+[ext_resource type="AudioStream" uid="uid://obit4uf8kxr8" path="res://src/Assets/dupped_ost-chill_beats_to_flip_gravity_to.mp3" id="2_daji0"]
+[ext_resource type="AudioStream" uid="uid://du25b1ui3oln0" path="res://src/Assets/collect_point.wav" id="2_ix2sr"]
+[ext_resource type="AudioStream" uid="uid://b65wh08tg7k75" path="res://src/Assets/player_die.wav" id="3_g4ila"]
+[ext_resource type="AudioStream" uid="uid://bwtwmxq6tsaqk" path="res://src/Assets/flip.wav" id="4_h0i6b"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_htggh")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_daji0")
+
+[node name="Collect_Point" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ix2sr")
+
+[node name="Player_Die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g4ila")
+
+[node name="Flip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h0i6b")
+
+[node name="Flip2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h0i6b")
+
+[node name="Flip3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h0i6b")

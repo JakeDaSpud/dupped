@@ -25,5 +25,6 @@ func _physics_process(delta) -> void:
 	# Flip Gravity
 	if Input.is_action_just_pressed("button_keyboard") || Input.is_action_just_pressed("button_mouse") || Input.is_action_just_pressed("button_gamepad"):
 		self.up_direction = -self.up_direction;
+		AudioManager.flip();
 	
 	move_and_slide()

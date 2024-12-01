@@ -11,5 +11,7 @@ func _on_body_entered(_body) -> void:
 	if (game.game_over):
 		return;
 	
-	game.add_points(self.value);
-	self.queue_free();
+	if (_body == get_node("/root/Game/Player")):
+		game.add_points(self.value);
+		AudioManager.collect_point();
+		self.queue_free();
