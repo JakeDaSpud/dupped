@@ -1,6 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyhqt26borhtm"]
+[gd_scene load_steps=11 format=3 uid="uid://dyhqt26borhtm"]
 
 [ext_resource type="Script" path="res://src/Scripts/point_ball.gd" id="1_ro08s"]
+[ext_resource type="Texture2D" uid="uid://chsrynmft32qg" path="res://src/Assets/player_and_point_spritesheet.png" id="2_75ji3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqawv"]
+atlas = ExtResource("2_75ji3")
+region = Rect2(0, 6, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01xq6"]
+atlas = ExtResource("2_75ji3")
+region = Rect2(12, 6, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krloa"]
+atlas = ExtResource("2_75ji3")
+region = Rect2(18, 6, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yekqo"]
+atlas = ExtResource("2_75ji3")
+region = Rect2(24, 6, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbpku"]
+atlas = ExtResource("2_75ji3")
+region = Rect2(36, 6, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knhs3"]
+atlas = ExtResource("2_75ji3")
+region = Rect2(42, 6, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qerlu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqawv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01xq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krloa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbpku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knhs3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dejb4"]
 size = Vector2(48, 48)
@@ -9,14 +60,12 @@ size = Vector2(48, 48)
 script = ExtResource("1_ro08s")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-color = Color(0.960791, 0.873166, 0.483874, 1)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9.53674e-07, -4.76837e-07)
+scale = Vector2(5.33333, 5.33333)
+sprite_frames = SubResource("SpriteFrames_qerlu")
+frame_progress = 0.282607
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dejb4")

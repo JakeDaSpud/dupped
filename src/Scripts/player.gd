@@ -8,6 +8,7 @@ var game : Node2D;
 
 func _ready() -> void:
 	game = get_tree().get_current_scene();
+	$Sprite.play("default");
 
 func _physics_process(delta) -> void:
 	

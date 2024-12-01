@@ -1,67 +1,68 @@
-[gd_scene load_steps=12 format=3 uid="uid://2kxndr85are3"]
+[gd_scene load_steps=12 format=3 uid="uid://uxcsvn83046o"]
 
-[ext_resource type="Script" path="res://src/Scripts/capsule.gd" id="1_d0oij"]
-[ext_resource type="PackedScene" uid="uid://dyhqt26borhtm" path="res://src/Scenes/Point_Ball.tscn" id="1_mqwd1"]
-[ext_resource type="Texture2D" uid="uid://bw0i0rtctwfoy" path="res://src/Assets/blue_capsule_spritesheet.png" id="2_ca8gp"]
+[ext_resource type="Script" path="res://src/Scripts/capsule.gd" id="1_os4tg"]
+[ext_resource type="Texture2D" uid="uid://bskxm2cpm6ovk" path="res://src/Assets/red_capsule_spritesheet.png" id="2_qel8f"]
+[ext_resource type="PackedScene" uid="uid://dyhqt26borhtm" path="res://src/Scenes/Point_Ball.tscn" id="3_i2hem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05s1x"]
 size = Vector2(16, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnopb"]
-atlas = ExtResource("2_ca8gp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_82ryh"]
+atlas = ExtResource("2_qel8f")
 region = Rect2(0, 0, 2, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmd1y"]
-atlas = ExtResource("2_ca8gp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3a21"]
+atlas = ExtResource("2_qel8f")
 region = Rect2(2, 0, 2, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hi6q"]
-atlas = ExtResource("2_ca8gp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mte3s"]
+atlas = ExtResource("2_qel8f")
 region = Rect2(4, 0, 2, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1j21"]
-atlas = ExtResource("2_ca8gp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_02h4c"]
+atlas = ExtResource("2_qel8f")
 region = Rect2(6, 0, 2, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pl4d"]
-atlas = ExtResource("2_ca8gp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_koe10"]
+atlas = ExtResource("2_qel8f")
 region = Rect2(8, 0, 2, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3img"]
-atlas = ExtResource("2_ca8gp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqy5n"]
+atlas = ExtResource("2_qel8f")
 region = Rect2(10, 0, 2, 6)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_51acc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dnopb")
+"texture": SubResource("AtlasTexture_82ryh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jmd1y")
+"texture": SubResource("AtlasTexture_t3a21")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2hi6q")
+"texture": SubResource("AtlasTexture_mte3s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a1j21")
+"texture": SubResource("AtlasTexture_02h4c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2pl4d")
+"texture": SubResource("AtlasTexture_koe10")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x3img")
+"texture": SubResource("AtlasTexture_xqy5n")
 }],
 "loop": true,
 "name": &"default",
 "speed": 20.0
 }]
 
-[node name="Capsule" type="CharacterBody2D"]
-script = ExtResource("1_d0oij")
+[node name="Fast_Capsule" type="CharacterBody2D"]
+script = ExtResource("1_os4tg")
 
 [node name="left_wall" type="Area2D" parent="."]
-position = Vector2(-64, 0)
+position = Vector2(24, 80)
+rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
 shape = SubResource("RectangleShape2D_05s1x")
@@ -72,11 +73,11 @@ texture_filter = 1
 position = Vector2(4.76837e-07, 9.53674e-07)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_51acc")
-frame = 5
 frame_progress = 0.264459
 
 [node name="right_wall" type="Area2D" parent="."]
-position = Vector2(64, 0)
+position = Vector2(-24, -80)
+rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
 shape = SubResource("RectangleShape2D_05s1x")
@@ -87,10 +88,10 @@ texture_filter = 1
 position = Vector2(4.76837e-07, 9.53674e-07)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_51acc")
-frame = 3
 frame_progress = 0.3514
 
-[node name="PointBall" parent="." instance=ExtResource("1_mqwd1")]
+[node name="PointBall" parent="." instance=ExtResource("3_i2hem")]
+value = 3
 
 [connection signal="body_entered" from="left_wall" to="." method="_on_wall_touched"]
 [connection signal="body_entered" from="right_wall" to="." method="_on_wall_touched"]

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://src/Scripts/game_manager.gd" id="1_jl2uv"]
 [ext_resource type="PackedScene" uid="uid://dgmyqu482ws7t" path="res://src/Scenes/Player.tscn" id="1_rc4ua"]
-[ext_resource type="PackedScene" uid="uid://2kxndr85are3" path="res://src/Scenes/Capsule.tscn" id="2_51kqe"]
 [ext_resource type="PackedScene" uid="uid://b0xxo0qt207yi" path="res://src/Scenes/menu_part.tscn" id="2_ko07x"]
 [ext_resource type="PackedScene" uid="uid://ueg1kpnu0mqg" path="res://src/Scenes/surface.tscn" id="2_qy24i"]
 [ext_resource type="PackedScene" uid="uid://4g36jp4j7phv" path="res://src/Scenes/scoreboard_part.tscn" id="4_adq7y"]
+[ext_resource type="PackedScene" uid="uid://b2qxugj7u77yf" path="res://src/Scenes/Capsule_Spawn_Area3D.tscn" id="6_e2lfe"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jl2uv")
@@ -32,6 +32,7 @@ animation = &"hold"
 
 [node name="start" parent="Menu" instance=ExtResource("2_ko07x")]
 position = Vector2(448, 192)
+animation = &"arrow"
 
 [node name="Level" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -67,8 +68,14 @@ metadata/_edit_lock_ = true
 [node name="floor" parent="Level" instance=ExtResource("2_qy24i")]
 position = Vector2(320, 344)
 
-[node name="Capsule" parent="Level" instance=ExtResource("2_51kqe")]
-position = Vector2(-192, 256)
+[node name="SpawnArea3DLeft" parent="Level" instance=ExtResource("6_e2lfe")]
+position = Vector2(-88, 288)
+
+[node name="SpawnArea3DRight" parent="Level" instance=ExtResource("6_e2lfe")]
+position = Vector2(728, 288)
+send_right = false
+
+[node name="SpawnTimer" type="Timer" parent="Level"]
 
 [node name="Player" parent="." instance=ExtResource("1_rc4ua")]
 visible = false
@@ -76,3 +83,5 @@ position = Vector2(320, 176)
 slide_on_ceiling = false
 platform_on_leave = 1
 platform_wall_layers = 2
+
+[connection signal="timeout" from="Level/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

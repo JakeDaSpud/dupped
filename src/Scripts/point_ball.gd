@@ -5,6 +5,7 @@ var game : Node2D;
 
 func _ready() -> void:
 	game = get_tree().get_current_scene();
+	$Sprite2D.play("default");
 
 func _on_body_entered(_body) -> void:
 	if (game.game_over):
