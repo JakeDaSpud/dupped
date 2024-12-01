@@ -6,7 +6,7 @@ extends Node2D
 var score : int = 0;
 var point_speed_multiplier : float = 0.1;
 var capsule_spawned : bool = false;
-var _button_held_time : float = 0;
+var _button_held_time : float = -1;
 var _button_threshold_time : float = 0.5; # Button must be held for this many seconds to toggle mute
 
 func _ready():
@@ -18,14 +18,16 @@ func _process(delta) -> void:
 	# Release button before that 1 whole second -> game.start()
 	
 	if in_menu && (Input.is_action_pressed("button_gamepad") || Input.is_action_pressed("button_keyboard") || Input.is_action_pressed("button_mouse")):
+		if (_button_held_time == -1):
+			_button_held_time = 0;
 		_button_held_time += delta;
 	
 	if in_menu && (Input.is_action_just_released("button_gamepad") || Input.is_action_just_released("button_keyboard") || Input.is_action_just_released("button_mouse")):
-		if (_button_held_time < _button_threshold_time):
+		if (_button_held_time < _button_threshold_time && _button_held_time > 0):
 			_start_game();
 		else:
 			_mute_toggle();
-			_button_held_time = 0;
+			_button_held_time = -1;
 		
 	
 	if game_over && (Input.is_action_just_pressed("button_gamepad") || Input.is_action_just_pressed("button_keyboard") || Input.is_action_just_pressed("button_mouse")):

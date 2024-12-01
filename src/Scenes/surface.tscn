@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ueg1kpnu0mqg"]
+[gd_scene load_steps=3 format=3 uid="uid://ueg1kpnu0mqg"]
+
+[ext_resource type="Texture2D" uid="uid://d0up18dwhf7no" path="res://src/Assets/surface.png" id="1_ud4ei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctfxu"]
 size = Vector2(640, 32)
@@ -10,7 +12,14 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_ctfxu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -320.0
 offset_top = -16.0
 offset_right = 320.0
 offset_bottom = 16.0
+
+[node name="Surface" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(8, 8)
+texture = ExtResource("1_ud4ei")

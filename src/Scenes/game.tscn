@@ -62,7 +62,7 @@ position = Vector2(528, 180.25)
 
 [node name="roof" parent="Level" instance=ExtResource("2_qy24i")]
 position = Vector2(320, 16)
-metadata/_edit_lock_ = true
+rotation = -3.14159
 
 [node name="floor" parent="Level" instance=ExtResource("2_qy24i")]
 position = Vector2(320, 344)
